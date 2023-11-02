@@ -10,9 +10,7 @@ def speak(message):
     tts.save(filename)
     playsound.playsound(filename)
     os.remove(filename)
-    
-    
-    
+
 def listen():
     r = sr.Recognizer()
     with sr.Microphone() as source:
