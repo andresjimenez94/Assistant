@@ -1,3 +1,4 @@
+from time import sleep
 import assistant
 import dataBase
 import utilities
@@ -6,9 +7,11 @@ def LlamarAndrea():
     escuchando=True
     while escuchando:
         assistant.speak("Dime")
-        utilities.Alert()
+        ##utilities.Alert()
+        sleep(1)
         Action = assistant.listen()
-        if (Action == "iniciar asistente"):
+        print(Action)
+        if (Action == "iniciar"):
             assistant.speak("Iniciando la configuracion del asistente")
             dataBase.iniciarAssistant()
             assistant.speak("Finalizó la configuracion del asistente")

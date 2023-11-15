@@ -23,7 +23,7 @@ def listen():
             #recognize_google_cloud()
             #recognize_ibm()
             
-            said = r.recognize_google(audio,language="es-ES")
+            said = r.recognize_google(audio,key="YOUR_GOOGLE_SPEECH_RECOGNITION_API_KEY",language="es-ES")
             #print(said)
         except Exception as e:
             print("Exception: " + str(e))
