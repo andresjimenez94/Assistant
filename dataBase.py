@@ -41,10 +41,10 @@ def iniciarAssistant():
         ]
     connection = sqlite3.connect("datos.db")
     cursor = connection.cursor()
-    cursor.execute("CREATE TABLE IF NOT EXISTS revision (id INTEGER PRIMARY KEY AUTOINCREMENT, name_patient INTEGER)")
-    cursor.execute("CREATE TABLE IF NOT EXISTS revision_detalle (id INTEGER PRIMARY KEY AUTOINCREMENT, id_revision INTEGER, tooth INTEGER, valor VARCHAR(30))")
+    cursor.execute("CREATE TABLE IF NOT EXISTS revision (id_revision INTEGER PRIMARY KEY, name_patient VARCHAR(250))")
+    cursor.execute("CREATE TABLE IF NOT EXISTS revision_detalle (id_revision_detalle INTEGER PRIMARY KEY AUTOINCREMENT, id_revision INTEGER, id_tooth INTEGER, valor VARCHAR(30))")
     
-    cursor.execute("CREATE TABLE IF NOT EXISTS tooth (id INTEGER PRIMARY KEY AUTOINCREMENT, Zone INTEGER, name_tooth VARCHAR(30))")
+    cursor.execute("CREATE TABLE IF NOT EXISTS tooth (id_tooth INTEGER PRIMARY KEY AUTOINCREMENT, Zone INTEGER, name_tooth VARCHAR(30))")
     for zona,name_diente  in Dientes:
         cursor.execute("INSERT INTO tooth (Zone,name_tooth) VALUES (?,?)",(zona,name_diente))
     

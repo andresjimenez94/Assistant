@@ -6,8 +6,8 @@ import utilities
 def LlamarAndrea():
     escuchando=True
     while escuchando:
-        assistant.speak("Dime")
-        utilities.Alert()
+        assistant.speak("ammm")
+        #utilities.Alert()
         action = assistant.listen()
         action=action.lower()
         print(action)
@@ -16,10 +16,10 @@ def LlamarAndrea():
             dataBase.iniciarAssistant()
             assistant.speak("Finalizó la configuracion del asistente")
             escuchando = False
-        if (action == "nueva"):
+        elif (action == "nueva"):
             escuchando = False
             pass
-        if (action == "consultar"):
+        elif (action == "consultar"):
             escuchando = False
             assistant.speak("Que revision deseas consultar?")
             revisonid = assistant.listen()
