@@ -49,9 +49,26 @@ def iniciarAssistant():
         cursor.execute("INSERT INTO tooth (Zone,name_tooth) VALUES (?,?)",(zona,name_diente))
     
     connection.commit()
+    cursor.close()
     
 def GetRevision(revisonid):
     connection = sqlite3.connect("datos.db")
     cursor = connection.cursor()
     valor = cursor.execute("SELECT Sum(valor) FROM revision_detalle WHERE id_revision = ?",(revisonid,),).fetchall()
+    cursor.close()
     return valor
+
+def GetIdRevisionConsecutivo():
+    connection = sqlite3.connect("datos.db")
+    cursor = connection.cursor()
+    valor = cursor.execute("Select IFNULL(max(id_revision)+1,1) as id_revision from revision ").fetchone()
+    cursor.close()
+    
+    return valor
+
+def GuardarRevision(id_revision,name_patient):
+    connection = sqlite3.connect("datos.db")
+    cursor = connection.cursor()
+    cursor.execute("INSERT INTO revision (id_revision,name_patient) VALUES (?,?)",(id_revision,name_patient))
+    connection.commit()
+    cursor.close()
