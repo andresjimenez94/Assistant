@@ -14,7 +14,7 @@ def speak(message):
 def listen():
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        #r.adjust_for_ambient_noise(source)
+        r.adjust_for_ambient_noise(source)
         audio = r.listen(source)
         said = ""
         
@@ -23,7 +23,7 @@ def listen():
             #recognize_google_cloud()
             #recognize_ibm()
             
-            said = r.recognize_google(audio,key="YOUR_GOOGLE_SPEECH_RECOGNITION_API_KEY",language="es-ES")
+            said = r.recognize_google(audio,language="es-ES")
             #print(said)
         except Exception as e:
             print("Exception: " + str(e))
