@@ -49,3 +49,9 @@ def iniciarAssistant():
         cursor.execute("INSERT INTO tooth (Zone,name_tooth) VALUES (?,?)",(zona,name_diente))
     
     connection.commit()
+    
+def GetRevision(revisonid):
+    connection = sqlite3.connect("datos.db")
+    cursor = connection.cursor()
+    valor = cursor.execute("SELECT Sum(valor) FROM revision_detalle WHERE id_revision = ?",(revisonid,),).fetchall()
+    return valor

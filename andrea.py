@@ -16,8 +16,17 @@ def LlamarAndrea():
             dataBase.iniciarAssistant()
             assistant.speak("Finalizó la configuracion del asistente")
             escuchando = False
-        if (Action == "nueva revision"):
+        if (Action == "nueva"):
+            escuchando = False
             pass
+        if (Action == "consultar"):
+            escuchando = False
+            assistant.speak("Que revision deseas consultar?")
+            revisonid = assistant.listen()
+            valor = dataBase.GetRevision(revisonid)
+            if (valor >= 320 and valor <= 520):
+                assistant.speak("Nivel de afección es Sano")
+            
         else:
             assistant.speak("No entendí, puedes repetirme por favor")
             
