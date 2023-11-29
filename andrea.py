@@ -75,17 +75,18 @@ def LlamarAndrea(action):
                 try:
                     assistant.speak("Que revision deseas consultar?")
                     revisonid = assistant.listen()
-                    
-                    valor = dataBase.GetRevision(revisonid)
+                    intrevisonid = int(revisonid)
+                    valor = dataBase.GetRevision(intrevisonid)
                     suma = valor[0]
-                    if (suma >= 320 and suma <= 520):
+                    intSuma = int(suma)
+                    if (intSuma >= 320 and intSuma <= 520):
                         assistant.speak("Nivel de afección es Sano")
                         
                     consultarRevision = False
                         
                 except Exception as e:
                     assistant.speak("No entendí")
-                    print("Error al consutlar revisión")
+                    print("Error en consutlar revisión")
                     consultarRevision = True
             
         else:
