@@ -19,6 +19,7 @@ def LlamarAndrea(action):
             dataBase.iniciarAssistant()
             assistant.speak("Finalizó la configuracion del asistente")
             escuchando = False
+            
         elif (action == "nueva"):
             escuchando = False
             idRevision = dataBase.GetIdRevisionConsecutivo()
@@ -40,8 +41,6 @@ def LlamarAndrea(action):
                         
             tooths = dataBase.ConsultarTooth()
             
-            
-            
             for id_tooth,name_tooth in tooths:
                 EnRevicion = True
                 while EnRevicion:
@@ -61,11 +60,33 @@ def LlamarAndrea(action):
             
         elif (action == "consultar"):
             escuchando = False
-            assistant.speak("Que revision deseas consultar?")
-            revisonid = assistant.listen()
-            valor = dataBase.GetRevision(revisonid)
-            if (valor >= 320 and valor <= 520):
-                assistant.speak("Nivel de afección es Sano")
+            print("entrando a consultar")
+            
+            cant_revision = dataBase.ConsultaRegistros()
+            revision_n = cant_revision[0]
+            print("aca volvi" +revision_n)
+            
+            assistant.speak(revision_n)
+            print(revision_n)
+            print("consultar2")
+            
+            consultarRevision = True
+            while consultarRevision:
+                try:
+                    assistant.speak("Que revision deseas consultar?")
+                    revisonid = assistant.listen()
+                    
+                    valor = dataBase.GetRevision(revisonid)
+                    suma = valor[0]
+                    if (suma >= 320 and suma <= 520):
+                        assistant.speak("Nivel de afección es Sano")
+                        
+                    consultarRevision = False
+                        
+                except Exception as e:
+                    assistant.speak("No entendí")
+                    print("Error al consutlar revisión")
+                    consultarRevision = True
             
         else:
             assistant.speak("No entendí, puedes repetirme por favor")

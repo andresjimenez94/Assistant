@@ -55,7 +55,7 @@ def iniciarAssistant():
 def GetRevision(revisonid):
     connection = sqlite3.connect("datos.db")
     cursor = connection.cursor()
-    valor = cursor.execute("SELECT Sum(valor) FROM revision_detalle WHERE id_revision = ?",(revisonid,),).fetchall()
+    valor = cursor.execute("SELECT Sum(valor) as valor  FROM revision_detalle WHERE id_revision = ?",(revisonid,),).fetchone()
     cursor.close()
     connection.close()
     return valor
@@ -91,4 +91,13 @@ def GuardarDetalleRevision(id_revision,id_tooth,valor):
     connection.commit()
     cursor.close()
     connection.close()
+    
+def ConsultaRegistros():
+    connection = sqlite3.connect("datos.db")
+    cursor = connection.cursor()
+    cant_revision = cursor.execute("Select Count(*) as count from revision ").fetchone()
+    connection.close()
+    cursor.close()
+    
+    return cant_revision
     
