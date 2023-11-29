@@ -6,7 +6,7 @@ def Alert():
     playsound.playsound(filename)
     
 def nivelAfeccion(Valor):
-    result=""
+    result="fuera de rango"
     
     if (Valor >= 320 and Valor <= 520):
         result = "sano"

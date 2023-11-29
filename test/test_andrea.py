@@ -20,3 +20,9 @@ class TestUtilities(unittest.TestCase):
         Valor = 1100
         result = utilities.nivelAfeccion(Valor)
         self.assertAlmostEqual("grave", result)
+    
+    def test_afeccion_fuera_rango(self):
+        """ Prueba cuando una afeccion es grave"""
+        Valor = 0
+        result = utilities.nivelAfeccion(Valor)
+        self.assertAlmostEqual("fuera de rango", result)
