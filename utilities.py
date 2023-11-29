@@ -10,7 +10,7 @@ def nivelAfeccion(Valor):
     
     if (Valor >= 320 and Valor <= 520):
         result = "sano"
-    elif (Valor >= 321 and Valor <= 999):
+    elif (Valor >= 521 and Valor <= 999):
         result = "enfermo"
     elif (Valor >= 1000 and Valor <= 1280):
         result = "grave"

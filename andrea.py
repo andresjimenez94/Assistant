@@ -79,8 +79,14 @@ def LlamarAndrea(action):
                     valor = dataBase.GetRevision(intrevisonid)
                     suma = valor[0]
                     intSuma = int(suma)
+                    diag=""
                     if (intSuma >= 320 and intSuma <= 520):
-                        assistant.speak("Nivel de afección es Sano")
+                        diag = "sano"
+                    elif (intSuma >= 521 and intSuma <= 999):
+                        diag = "enfermo"
+                    elif (intSuma >= 1000 and intSuma <= 1280):
+                        diag = "grave"
+                    assistant.speak("Nivel de afección es "+ diag)
                         
                     consultarRevision = False
                         
