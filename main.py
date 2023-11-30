@@ -6,6 +6,8 @@ def main():
     print("Inicia Andrea")
     while True:
         try:
+            assistant.speak("Hola, Soy tu asistente virtual Andrea, deseas iniciar el sistema?")            
+            assistant.speak("Si deseas iniciar el sistema, por favor menciona mi nombre")            
             print("Habla")
             audio = assistant.listen()
             audio=audio.lower()

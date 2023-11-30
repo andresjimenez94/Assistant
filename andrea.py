@@ -7,27 +7,29 @@ import utilities
 def LlamarAndrea(action):
     escuchando=True
     while escuchando:
+        
+        assistant.speak("Iniciando la configuracion del asistente")
+        dataBase.iniciarAssistant()
+        assistant.speak("que deseas realizar: nueva, consultar?")
+        action = assistant.listen()
+        action=action.lower()
+        print(action)
+        
         if action == "":
-            assistant.speak("a")
+            assistant.speak("No entendo, puedes repetirme por favor")
             #utilities.Alert()
             action = assistant.listen()
             action=action.lower()
             print(action)
         
-        if (action == "iniciar"):
-            assistant.speak("Iniciando la configuracion del asistente")
-            dataBase.iniciarAssistant()
-            assistant.speak("Finalizó la configuracion del asistente")
-            escuchando = False
-            
-        elif (action == "nueva"):
+        if (action == "nueva"):
             escuchando = False
             idRevision = dataBase.GetIdRevisionConsecutivo()
             id= idRevision[0]
             print(id)
             Paciente = True
             while Paciente:
-                assistant.speak("¿Cual es el nombre del paciente?")
+                assistant.speak("Cual es el nombre del paciente?")
                 ##name = assistant.listen()
                 name = "Prueba"
                 print(name)
@@ -53,7 +55,7 @@ def LlamarAndrea(action):
                         dataBase.GuardarDetalleRevision(id,id_tooth,valor)
                         EnRevicion = False
                     else:
-                        assistant.speak("Lo siento no entendí")
+                        assistant.speak("Lo siento no entendo")
                     
 
             assistant.speak("Revision Finalizada")
@@ -87,10 +89,10 @@ def LlamarAndrea(action):
                         
                 except Exception as e:
                     assistant.speak("No entendí")
-                    print("Error en consutlar revisión")
+                    print("Error en consutar la revision")
                     consultarRevision = True
             
         else:
-            assistant.speak("No entendí, puedes repetirme por favor")
+            assistant.speak("No entendo, puedes repetirme por favor")
             
     
