@@ -68,7 +68,7 @@ def LlamarAndrea(action):
             revision_n = cant_revision[0]
             print("aca volvi" +revision_n)
             
-            assistant.speak(revision_n)
+            assistant.speak("Actualmente tenemos " +revision_n +"Revisiones registradas"))
             print(revision_n)
             print("consultar2")
             
